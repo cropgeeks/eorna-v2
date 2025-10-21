@@ -135,11 +135,11 @@ process executeRunQueries{
     else
         echo "processing only subset of run accessions for testing -- n = $params.test_maxNumRuns"
         cut -f1 combinedMetadataFile.txt \
-        | head -n $params.test_maxNumRuns \
+        | tail -n $params.test_maxNumRuns \
         > allRunAccessions.txt
 
         cut -f1,100 combinedMetadataFile.txt \
-        | head -n $params.test_maxNumRuns \
+        | tail -n $params.test_maxNumRuns \
         > accessionLookup.txt
     fi
     
@@ -171,7 +171,7 @@ process downloadRunAccession {
     # this code ensures that download retries from server failure are not executed immediately, so the server gets at least some time to recover as some server failures are short-lived (e.g. due to high demand)
     if [[ $task.attempt -gt 1 ]]
     then
-        echo "Retry attempt $task.attempt — sleeping for 60 seconds..."
+        echo "Retry -- attempt $task.attempt — sleeping for 60 seconds..."
         sleep 60
     fi
 
@@ -189,10 +189,10 @@ process downloadRunAccession {
     # here we need a check for the correct number of URLs
     # we are currently only accepting paired end files, so this number is 2
     # any deviation and we need to fail the job
-    if [ \${ftpFiles[@]} -ne 2 ]
+    if [ \${#ftpFiles[@]} -ne 2 ]
     then
-        echo "Error: number of download URLs is not 2."
-        exit 1
+        echo "Error: number of download URLs is not 2 -- found \${#ftpFiles[@]} URLs"
+        exit 11
     else
         echo "correct number of download URLs found (n = 2)"
     fi
@@ -233,13 +233,13 @@ process downloadRunAccession {
     if [[ "\$md5DownloadedR1" != "\${md5sums[0]}" ]]
     then
         echo "Checksum mismatch for ${runAccession}_1.fastq.gz"
-        exit 1
+        exit 22
     fi
 
     if [[ "\$md5DownloadedR2" != "\${md5sums[1]}" ]]
     then
         echo "Checksum mismatch for ${runAccession}_2.fastq.gz"
-        exit 1
+        exit 22
     fi
 
     echo "md5 check complete for run accession $runAccession"
