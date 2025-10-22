@@ -31,6 +31,7 @@ Downloaded and trimmed data isn’t copied into the results folder – it only e
 7.	Modify the “transcriptome” parameter in the “params” section of nextflow.config to reflect the name of your FASTA file with the reference transcripts.
 8.	If necessary, change the executor name in nextflow.config from “slurm” as appropriate (e.g. to “PBS” or whatever scheduling system you are using). 
 9.	We have included a shell script wrapper, run-NF.sh, for submission of the actual Nextflow job to Slurm. Assuming Slurm is the executor, submit this script to Slurm with “sbatch” as normal. Once the script is submitted, Nextflow will spawn its process instances, each of which becomes a Slurm job itself. You will need to adapt this script as appropriate if your local scheduling system isn’t Slurm. 
+10. It is advisable to run a small number of samples initially to ensure that the workflow executes correctly with the species of interest and the execution environment chosen. To this end the nextflow.config file contains the parameter "params.test_maxNumRuns", which is set to zero if all runs are to be processed but can be set to any positive integer number to limit the number of runs for testing.
 
 ## Software dependencies
 
@@ -67,11 +68,6 @@ executor {
 }
 ```
 Again, this can be changed depending on the local setup. 
-
-It is advisable to run a small number of samples initially to ensure that the workflow executes correctly with the species of interest and the execution environment chosen. To this end the nextflow.config file contains the following parameter, which is set to zero if all runs are to be processed but can be set to any integer number to limit the number of runs for testing:
-```
-params.test_maxNumRuns = 0
-```
 
 ## Reporting
 
