@@ -1,1 +1,1 @@
-# eorna-v2
+# EORNA v.2
