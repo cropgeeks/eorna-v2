@@ -1,0 +1,23 @@
+proteins_fasta: EORNA2_RTD.longestProteins.fa
+token_score_bit_score_weight: 0.468
+token_score_database_score_weight: 0.2098
+token_score_overlap_score_weight: 0.3221
+output: ./ahrd_output.tsv
+blast_dbs:
+  swissprot:
+    weight: 653
+    description_score_bit_score_weight: 2.717061
+    file: blast/swissprot/EORNA2_RTD_vs_sprot.raw
+    database: blast/dbs/uniprot_sprot_plants.fasta
+    blacklist: resources/blacklist_descline.txt
+    filter: apps/AHRD/AHRD-3.3.3/test/resources/filter_descline_sprot.txt
+    token_blacklist: apps/AHRD/AHRD-3.3.3/test/resources/blacklist_token.txt
+
+  trembl:
+    weight: 904
+    description_score_bit_score_weight: 2.590211
+    file: blast/trembl/EORNA2_RTD_vs_trembl.all.txt
+    database: blast/dbs/uniprot_trembl_plants.fasta
+    blacklist: apps/AHRD/AHRD-3.3.3/test/resources/blacklist_descline.txt
+    filter: apps/AHRD/AHRD-3.3.3/test/resources/filter_descline_trembl.txt
+    token_blacklist: apps/AHRD/AHRD-3.3.3/test/resources/blacklist_token.txt
