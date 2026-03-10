@@ -5,3 +5,5 @@ We have released a major new version of the EORNA database, a gene expression da
 Discovering appropriate samples and generating the quantifications required a high degree of workflow automation. To this end we have developed a Nextflow workflow which uses the REST API at the European Nucleotide Archive (ENA) for the purpose of both study and sequencing run discovery (https://ena-docs.readthedocs.io/en/latest/retrieval/programmatic-access.html). The workflow and associated documentation can be found under scripts/quantification/nextflow. The workflow is generic and can be applied to any species with a few simple configuration steps. 
 
 We have also automated the process of setting up a database and web frontend for the quantification data so that anyone can spin up their own instance of EORNA for their species of choice. See the scripts directory for details. 
+
+The quantification data and underlying reference transcriptome are available from Zenodo at https://zenodo.org/records/18466205 (https://zenodo.org/records/18466205). 
