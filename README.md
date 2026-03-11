@@ -6,4 +6,4 @@ Discovering appropriate samples and generating the quantifications required a hi
 
 We have also automated the process of setting up a database and web frontend for the quantification data so that anyone can spin up their own instance of EORNA for their species of choice. See the scripts directory for details. 
 
-The quantification data and underlying reference transcriptome are available from Zenodo at https://zenodo.org/records/18466205 (https://zenodo.org/records/18466205). The scripts and database for EORNA2 are provided at https://doi.org/10.5281/zenodo.18956827.
+The quantification data and underlying reference transcriptome are available from Zenodo at https://zenodo.org/records/18466205. The scripts and Docker image for database and website construction were too large for inclusion here and are provided at https://doi.org/10.5281/zenodo.18956827.
